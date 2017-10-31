@@ -9,11 +9,13 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.13"
+        classpath "gradle.plugin.org.jmailen.gradle:kotlinter-gradle:1.2.0"
     }
 }
 
 apply plugin: "org.jetbrains.dokka"
 apply plugin: 'kotlin'
+apply plugin: "org.jmailen.kotlinter"
 apply plugin: 'groovy'
 
 
