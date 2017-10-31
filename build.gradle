@@ -25,3 +25,7 @@ compileKotlin {
         jvmTarget = '1.8'
     }
 }
+
+test {
+    maxParallelForks = 4
+}
