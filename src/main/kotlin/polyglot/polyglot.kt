@@ -14,7 +14,7 @@ import java.util.function.Consumer
  * @property lang the language being tested
  * @property supported whether or not it is supported
  */
-class PolyglotConfig(var lang: String?, var supported: Boolean?) {
+class PolyglotConfig(var lang: String = "", var supported: Boolean = false) {
 
     /**
      * DSL-style method for setting the `lang` property.
@@ -44,7 +44,7 @@ class PolyglotConfig(var lang: String?, var supported: Boolean?) {
          */
         @JvmStatic
         fun configure(@DelegatesTo(PolyglotConfig::class) closure: Closure<Any>): PolyglotConfig {
-            val config = PolyglotConfig("", false)
+            val config = PolyglotConfig()
             closure.delegate = config
             closure.resolveStrategy = Closure.DELEGATE_FIRST
             closure.call()
@@ -58,7 +58,7 @@ class PolyglotConfig(var lang: String?, var supported: Boolean?) {
          */
         @JvmStatic
         fun configure(consumer: Consumer<PolyglotConfig>): PolyglotConfig {
-            val config = PolyglotConfig("", false)
+            val config = PolyglotConfig()
             consumer.accept(config)
             return config
         }
@@ -69,7 +69,7 @@ class PolyglotConfig(var lang: String?, var supported: Boolean?) {
          * @param config the Kotlin configuration lambda function.
          */
         fun configure(config: PolyglotConfig.() -> Unit): PolyglotConfig {
-            val cfg = PolyglotConfig("", false)
+            val cfg = PolyglotConfig()
             cfg.config()
             return cfg
         }

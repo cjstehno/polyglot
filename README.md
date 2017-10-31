@@ -21,7 +21,7 @@ which is implemented as:
 
 ```kotlin
 fun configure(config: PolyglotConfig.() -> Unit): PolyglotConfig {
-    val cfg = PolyglotConfig("", false)
+    val cfg = PolyglotConfig()
     cfg.config()
     return cfg
 }
@@ -43,7 +43,7 @@ which is implemented as:
 ```kotlin
 @JvmStatic
 fun configure(consumer: Consumer<PolyglotConfig>): PolyglotConfig {
-    val config = PolyglotConfig("", false)
+    val config = PolyglotConfig()
     consumer.accept(config)
     return config
 }
@@ -65,7 +65,7 @@ which is implemented as:
 ```kotlin
 @JvmStatic
 fun configure(@DelegatesTo(PolyglotConfig::class) closure: Closure<Any>): PolyglotConfig {
-    val config = PolyglotConfig("", false)
+    val config = PolyglotConfig()
     closure.delegate = config
     closure.resolveStrategy = Closure.DELEGATE_FIRST
     closure.call()

@@ -14,6 +14,6 @@ class KotlinPolyglotTest {
         }
 
         assertEquals(config.lang, "Kotlin")
-        assertTrue(config.supported!!)
+        assertTrue(config.supported)
     }
 }
