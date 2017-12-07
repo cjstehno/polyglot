@@ -1,23 +1,10 @@
-buildscript {
-    ext.kotlin_version = '1.1.4-3'
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.13"
-        classpath "gradle.plugin.org.jmailen.gradle:kotlinter-gradle:1.2.0"
-    }
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.0'
+    // id "org.jetbrains.dokka" version "0.9.15"
+    id "org.jmailen.kotlinter" version "1.6.0"
+
+    id 'groovy'
 }
-
-apply plugin: "org.jetbrains.dokka"
-apply plugin: 'kotlin'
-apply plugin: "org.jmailen.kotlinter"
-apply plugin: 'groovy'
-
 
 group = 'com.stehno'
 version = '0.0.1'
@@ -31,7 +18,7 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.0"
 
     testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
 }
@@ -48,12 +35,12 @@ compileTestKotlin {
     }
 }
 
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/javadoc"
-
-    includes = ['src/main/kotlin/polyglot/package.md']
-}
+// dokka {
+//     outputFormat = 'html'
+//     outputDirectory = "$buildDir/javadoc"
+//
+//     includes = ['src/main/kotlin/polyglot/package.md']
+// }
 
 test {
     maxParallelForks = 4
